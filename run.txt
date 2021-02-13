@@ -1,0 +1,123 @@
+D:\Projects\Trade-Dangerous\trade.py: TradeDangerous help
+
+usage: trade.py run --capacity N --credits CR [--from STATION]
+                    [--to PLACE | --towards SYSTEM | --loop]
+                    [--via PLACE[,PLACE,...]] [--avoid AVOID]
+                    [--direct | --hops N] [--jumps-per N] [--ly-per N.NN]
+                    [--empty-ly N.NN] [--start-jumps STARTJUMPS]
+                    [--end-jumps ENDJUMPS] [--show-jumps] [--limit N]
+                    [--age DAYS] [--pad-size PADSIZES]
+                    [--no-planet | --planetary PLANETARY]
+                    [--fleet-carrier FLEET] [--black-market]
+                    [--ls-penalty LSPENALTY] [--ls-max LS]
+                    [--gain-per-ton MINGAINPERTON]
+                    [--max-gain-per-ton MAXGAINPERTON] [--unique]
+                    [--loop-interval LOOPINT] [--margin N.NN] [--insurance CR]
+                    [--routes N] [--max-routes N] [--checklist] [--x52-pro]
+                    [--prune-score PRUNESCORES] [--prune-hops PRUNEHOPS]
+                    [--progress] [--supply SUPPLY] [--demand DEMAND]
+                    [--summary] [--shorten] [--help] [--debug] [--detail]
+                    [--color] [--quiet] [--db DBFILENAME] [--cwd CWD]
+                    [--link-ly MAXSYSTEMLINKLY]
+
+trade.py run --capacity 1000 --credits 1b --from Exphiay --direct --ly-per 500 --pad-size L --no-planet -vv
+
+Required Arguments:
+  --capacity N          Maximum capacity of cargo hold.
+  --credits CR          Starting credits.
+
+Optional Switches:
+  --from STATION, -f STATION
+                        Starting system/station.
+  --to PLACE, -t PLACE  Final system/station.
+  --towards SYSTEM, -T SYSTEM
+                        Choose a route that continually reduces the distance
+                        towards this system.
+  --loop                Return to the starting station.
+  --via PLACE[,PLACE,...]
+                        Require specified systems/stations to be en-route.
+  --avoid AVOID         Exclude an item, system or station from trading.
+                        Partial matches allowed, e.g. "dom.App" or "domap"
+                        matches "Dom. Appliances".
+  --direct              Assume destinations are reachable without worrying
+                        about jumps.
+  --hops N              Number of hops (station-to-station) to run.
+  --jumps-per N         Maximum number of jumps (system-to-system) per hop.
+  --ly-per N.NN         Maximum light years per jump.
+  --empty-ly N.NN       Maximum light years ship can jump when empty.
+  --start-jumps STARTJUMPS, -s STARTJUMPS
+                        Consider stations within this many jumps of the origin
+                        (requires --from).
+  --end-jumps ENDJUMPS, -e ENDJUMPS
+                        Consider stations within this many jumps of the
+                        destination (requires --to).
+  --show-jumps, -J      Show detail of jumps between hops.
+  --limit N             Maximum units of any one cargo item to buy (0:
+                        unlimited).
+  --age DAYS, --max-days-old DAYS, -MD DAYS
+                        Maximum age (in days) of trade data to use.
+  --pad-size PADSIZES, -p PADSIZES
+                        Limit to stations with one of the specified pad sizes,
+                        e.g. --pad SML? matches any pad, --pad M matches only
+                        medium pads.
+  --no-planet           Require stations to be in space.
+  --planetary PLANETARY
+                        Limit to stations with one of the specified planetary,
+                        e.g. --pla YN? matches any station, --pla Y matches
+                        only planetary stations.
+  --fleet-carrier FLEET, --fc FLEET
+                        Limit to stations with one of the specified fleet-
+                        carrier, e.g. --fc YN? matches any station, --fc Y
+                        matches only fleet-carrier stations.
+  --black-market, --bm  Require stations known to have a black market.
+  --ls-penalty LSPENALTY, --lsp LSPENALTY
+                        Penalty per 1kls stations are from their stars.
+  --ls-max LS           Only consider stations upto this many ls from their
+                        star.
+  --gain-per-ton MINGAINPERTON, --gpt MINGAINPERTON
+                        Specify the minimum gain per ton of cargo
+  --max-gain-per-ton MAXGAINPERTON, --mgpt MAXGAINPERTON
+                        Specify the maximum gain per ton of cargo
+  --unique              Only visit each station once.
+  --loop-interval LOOPINT, -li LOOPINT
+                        Require this many hops between visits to the same
+                        station. A value of 1 would be the default behavior,
+                        so a value of 2 is the minimum allowed.
+  --margin N.NN         Reduce gains made on each hop to provide a margin of
+                        error for market fluctuations (e.g: 0.25 reduces gains
+                        by 1/4). 0<: N<: 0.25.
+  --insurance CR        Reserve at least this many credits to cover insurance.
+  --routes N            Maximum number of routes to show. DEFAULT: 1
+  --max-routes N        At the end of each hop, limit the number of routes
+                        that continue to the next round to the top N highest
+                        scoring
+  --checklist           Provide a checklist flow for the route.
+  --x52-pro             Enable experimental X52 Pro MFD output.
+  --prune-score PRUNESCORES
+                        From the 3rd hop on, only consider routes which have
+                        at least this percentage of the current best routes
+                        score.
+  --prune-hops PRUNEHOPS
+                        Changes which hop --prune-score takes effect from.
+  --progress, -P        Show hop progress
+  --supply SUPPLY       Only considers items which have at least this many
+                        units.
+  --demand DEMAND       Only considers items which have at least this much
+                        demand.
+  --summary             Summary layout of route instructions.
+  --shorten             (Requires --to) Find the shortest route with the best
+                        gpt.
+
+Common Switches:
+  --help, -h            Show this help message and exit.
+  --debug, -w           Enable/raise level of diagnostic output.
+  --detail, -v          Increase level of detail in output.
+  --color, -c           Add color to output for enhanced readability.
+  --quiet, -q           Reduce level of detail in output.
+  --db DBFILENAME       Specify location of the SQLite database.
+  --cwd CWD, -C CWD     Change the working directory file accesses are made
+                        from.
+  --link-ly MAXSYSTEMLINKLY, -L MAXSYSTEMLINKLY
+                        Maximum lightyears between systems to be considered
+                        linked.
+
