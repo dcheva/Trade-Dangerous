@@ -27,6 +27,7 @@ test-data/
 
 # coding environment
 *.suo
+.idea
 .project
 .pydevproject
 .vscode
